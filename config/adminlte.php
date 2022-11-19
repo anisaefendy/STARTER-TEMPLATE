@@ -292,6 +292,12 @@ return [
     'menu' => [
         // Navbar items:
         [
+            'text' => 'Buku',
+            'url' => 'admin/books',
+            'icon ' => 'fas fa-fw fa-book',
+            'can' => 'isAdmin',
+        ],
+        [
             'type'         => 'navbar-search',
             'text'         => 'search',
             'topnav_right' => true,
@@ -323,19 +329,11 @@ return [
             'text' => 'profile',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-user',
-            'can' => 'superAdmin',
-        ],
-        [
-            'text' => 'buku',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-book',
-            'can' => ['superAdmin','isUser'],
         ],
         [
             'text' => 'change_password',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
-            'can' => ['superAdmin','isUser'],
         ],
         [
             'text'    => 'multilevel',

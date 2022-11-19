@@ -24,9 +24,9 @@ class CreateUsersSeeder extends Seeder
                 'roles_id'=> 2
             ],
             [
-                'name'=>'isUser',
-                'username'=>'isUser',
-                'email'=>'user@mail.com',
+                'name'=>'isAdmin',
+                'username'=>'isAdmin',
+                'email'=>'admin@mail.com',
                 'password'=>bcrypt('12345'),
                 'roles_id'=> 1
             ]
