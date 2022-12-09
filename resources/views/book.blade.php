@@ -172,6 +172,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group" id="image-area"></div>
+                            <div class="form-group">
                                 <label for="edit-cover">Cover</label>
                                 <input type="file" class="form-control" name="cover" id="edit-cover"/>
                             </div>

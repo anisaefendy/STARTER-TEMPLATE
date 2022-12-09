@@ -75,7 +75,7 @@ class AdminController extends Controller
             'penulis' => 'required',
             'tahun' => 'required',
             'penerbit' => 'required',
-            'cover' => 'required|mimes:jpeg,png,jpg,gif,svg'
+            
         ]);
 
         $book->judul = $req->get('judul');
