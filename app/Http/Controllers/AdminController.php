@@ -36,7 +36,6 @@ class AdminController extends Controller
             'penulis' =>'required',
             'tahun' =>'required',
             'penerbit' => 'required',
-            'cover' => 'image|file|max:2048'
         ]);
 
         $book = new Book;
@@ -47,7 +46,7 @@ class AdminController extends Controller
         if($req->hasFile('cover')){
             $extension = $req->file('cover')->extension();
             $filename = 'cover_buku_'.time().'.'.$extension;
-            $req->file('cover')->storeAs('public/cover_buku', $filename);
+            $req->file('cover')->storeAs('public/cover_buku/', $filename);
             $book->cover = $filename;
         }
 
