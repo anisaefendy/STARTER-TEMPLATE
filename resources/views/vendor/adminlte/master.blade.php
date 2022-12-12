@@ -38,6 +38,7 @@
     @else
         <link rel="stylesheet" href="{{ mix(config('adminlte.laravel_mix_css_path', 'css/app.css')) }}">
     @endif
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js">
 
     {{-- Livewire Styles --}}
     @if(config('adminlte.livewire'))
@@ -94,6 +95,8 @@
     @else
         <script src="{{ mix(config('adminlte.laravel_mix_js_path', 'js/app.js')) }}"></script>
     @endif
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 
     {{-- Livewire Script --}}
     @if(config('adminlte.livewire'))
@@ -106,59 +109,62 @@
 
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
-
     <script>
-        const Toast =Swal.mixin({
+        const Toast = Swal.mixin({
             toast: true,
-            position: 'top-end',
+            postition: 'top-end',
             showConfirmButton: false,
-            timer: 3000,
+            timer: 3000
         })
 
         @if(Session::has('message'))
-        var type = "{{Session::get('alert-type)}}";
+        var type = "{{Session::get('alert-type')}}";
 
         switch (type) {
-            case 'info';
-                Toast.fire({type: 'info', title: "{{ Session::get('message') }}"
-                })
+            case 'success':
+                Toast.fire({
+                    icon: 'success',
+                    title: "{{Session::get('message')}}"
+                });
             break;
-
-            case 'success';
-                Toast.fire({type: 'success', title: "{{ Session::get('message') }}"
-                })
+            case 'warning':
+                Toast.fire({
+                    icon: 'warning',
+                    title: "{{Session::get('message')}}"
+                });
             break;
-
-            case 'warning';
-                Toast.fire({type: 'warning', title: "{{ Session::get('message') }}"
-                })
+            case 'error':
+                Toast.fire({
+                    icon: 'error',
+                    title: "{{Session::get('message')}}"
+                });
             break;
-
-            case 'error';
-                Toast.fire({type: 'error', title: "{{ Session::get('message') }}"
-                })
-            break;
-
-            case 'dialog_error';
-                Swal.fire({type: 'error', title: "Ooooops", text:"{{ Session::get('message') }}", timer: 3000
-                })
+            case 'dialog_error':
+                Swal.fire({
+                    icon: 'error',
+                    title: "Ooops!!!",
+                    text: "{{Session::get('message')}}",
+                    timer: 3000
+                });
             break;
         }
         @endif
 
         @if ($errors->any())
-            @foreach ($errors->all() as $error)
-            Swal.fire({typr: 'error', title: 'Ooops', text: "Terjadi suatu kesalahan "
-            })
+            @foreach($errors->all() as $error)
+                Swal.fire({
+                    icon: 'error',
+                    title: "Ooops!!!",
+                    text: "{{ $error }}",
+                })
             @endforeach
         @endif
 
-        $('#Table-data').DataTable();
+        $('#table-data').DataTable();
 
         let baseurl = "<?=url('/')?>";
-        let fullURL = "<?=url->full()?>";
-
-        </script>
+        let fullURL = "<?=url()->full()?>";
+    </script>
 
 </body>
 

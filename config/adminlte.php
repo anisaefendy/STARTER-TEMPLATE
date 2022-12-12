@@ -291,23 +291,25 @@ return [
 
     'menu' => [
         // Navbar items:
-        [
-            'text' => 'Buku',
-            'url' => 'admin/book',
-            'icon' => 'fas fa-fw fa-book',
-            'can' => 'isAdmin',
-        ],
+
         [
             'type'         => 'navbar-search',
             'text'         => 'search',
             'topnav_right' => true,
         ],
+
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
 
         // Sidebar items:
+        [
+            'text' => 'Buku',
+            'url' => 'admin/books',
+            'icon' => 'fas fa-fw fa-book',
+            'can' => 'isAdmin',
+        ],
         [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
